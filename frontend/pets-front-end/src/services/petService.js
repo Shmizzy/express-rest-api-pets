@@ -26,7 +26,7 @@ const createPet = async (formData) => {
 const updatePet = async (formData, _id) => {
     try {
         const res = await fetch('http://localhost:3000/pets/' + _id, {
-            method: 'POST',
+            method: 'PUT',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(formData)
         });
