@@ -19,7 +19,7 @@ const PetForm = ({ pet, onSubmit }) => {
   })
 
   const handleChange = (event) => {
-    const { name, value } = e.target;
+    const { name, value } = event.target;
     setFormData({
         ...formData,
         [name]: value
@@ -64,7 +64,7 @@ const PetForm = ({ pet, onSubmit }) => {
       <label style={{ alignSelf: "flex-start" }}>Breed: </label>
       <input
         type="text"
-        name="name"
+        name="breed"
         value={formData.breed}
         onChange={handleChange}
         style={{
@@ -75,7 +75,7 @@ const PetForm = ({ pet, onSubmit }) => {
       <label style={{ alignSelf: "flex-start" }}>Age: </label>
       <input
         type="text"
-        name="name"
+        name="age"
         value={formData.age}
         onChange={handleChange}
         style={{
