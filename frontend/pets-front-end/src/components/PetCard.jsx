@@ -1,8 +1,13 @@
 import './petCard.css'
 
-const PetCard = ({ pet }) => {
+const PetCard = ({ pet, updateSelected }) => {
+    
+    const updatePet = () => {
+        updateSelected(pet)
+    }
+    
     return(
-        <div className="petCard">
+        <div className="petCard" onClick={updatePet}>
             <h1>{pet.name}</h1>
             <h2>Age: {pet.age}</h2>
             <h2>Breed: {pet.breed}</h2>

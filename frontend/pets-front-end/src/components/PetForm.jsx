@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { createPet, updatePet } from "../services/petService.js";
+import * as petService from '../services/petService';
 
-const PetForm = ({ pet, onSubmit }) => {
+const PetForm = ({ pet, setPetList, petList }) => {
   const [ formData, setFormData ] = useState({
     name: '',
     breed: '',
@@ -16,7 +16,7 @@ const PetForm = ({ pet, onSubmit }) => {
         age: pet.age
       })
     }
-  })
+  }, [pet]);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -28,13 +28,17 @@ const PetForm = ({ pet, onSubmit }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(petList);
     try {
         if (pet) {
-            await updatePet(formData, pet._id);
+            await petService.updatePet(formData, pet._id);
+            const newList = await petService.fetchPets();
+            setPetList(newList);
         } else {
-            await createPet(formData);
+            const newPet = await petService.createPet(formData);
+            setPetList([...petList , newPet]);
         }
-        onSubmit();
+       
     } catch (error) {
         console.log(error);
     }
