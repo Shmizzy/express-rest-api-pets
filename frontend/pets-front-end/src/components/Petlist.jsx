@@ -1,11 +1,9 @@
 //Defines a functional component called PetList that takes props as input. It maps over the petList array in the props to create a list of pets with their names displayed as list items. Each pet name is clickable, triggering the updateSelected function when clicked.
-
+import PetCard from "./PetCard";
 
 const PetList = (props) => { 
   const pets = props.petList.map((pet) => (
-    <a key={pet._id} onClick={() => props.updateSelected(pet)}>
-      <li>{pet.name}</li>
-    </a>
+    <PetCard key={pet._id} pet={pet}/>
   ));
 
   return (
