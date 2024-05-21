@@ -7,9 +7,13 @@ const petSchema = mongoose.Schema({
     },
     age: {
         type: Number,
+        required: true,
         min: 0,
     },
-    breed: String
+    breed: {
+        type: String,
+        required: true,
+    },
 });
 
 module.exports = mongoose.model('Pet', petSchema);
